@@ -10,8 +10,7 @@ namespace BapSem22017
     {
         static void Main(string[] args)
         {
-            //test push/pull
-        
+           
         }
     }
 }
