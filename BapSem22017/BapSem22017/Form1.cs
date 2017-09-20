@@ -10,16 +10,36 @@ using System.Windows.Forms;
 
 namespace BapSem22017
 {
-    public partial class Form1 : Form
+    public partial class windowText : Form
     {
-        public Form1()
+        
+
+        public windowText()
         {
+            
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            //Initializes and sets all components of the interface
+            title.Text = "Manage Suppliers";
+            supplierCodeLabel.Text = "Supplier Code:";
+            findSupplierEntry.Text = "";
+            findSupplierButton.Text = "Find";
+            supplierIDLabel.Text = "Supplier ID:";
+            supplierTypeLabel.Text = "Supplier Type:";
+            supplierStatusLabel.Text = "Supplier Status:";
+            recievesReportsLabel.Text = "Recieves Report:";
+            reportFrequencyLabel.Text = "Report Frequency:";
+            reportDayLabel.Text = "Report Day:";
+        }
+
+
+        private void findSupplierButton_Click(object sender, EventArgs e)
+        {
+            //ADD METHOD FOR FIND BUTTON
         }
     }
 }

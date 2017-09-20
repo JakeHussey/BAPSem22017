@@ -10,7 +10,9 @@ namespace BapSem22017
     {
         static void Main(string[] args)
         {
-           
+            windowText mainWindow = new windowText();
+            mainWindow.ShowDialog();
+
         }
 
 
