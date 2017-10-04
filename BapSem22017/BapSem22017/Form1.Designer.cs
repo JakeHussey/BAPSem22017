@@ -38,6 +38,9 @@
             this.reportDayLabel = new System.Windows.Forms.Label();
             this.reportFrequencyLabel = new System.Windows.Forms.Label();
             this.recievesReportsLabel = new System.Windows.Forms.Label();
+            this.emailAddressLabel = new System.Windows.Forms.Label();
+            this.viewReportHistoryButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -137,11 +140,45 @@
             this.recievesReportsLabel.TabIndex = 7;
             this.recievesReportsLabel.Text = "Recieves Reports:";
             // 
+            // emailAddressLabel
+            // 
+            this.emailAddressLabel.AutoSize = true;
+            this.emailAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.emailAddressLabel.Location = new System.Drawing.Point(67, 630);
+            this.emailAddressLabel.Name = "emailAddressLabel";
+            this.emailAddressLabel.Size = new System.Drawing.Size(102, 17);
+            this.emailAddressLabel.TabIndex = 10;
+            this.emailAddressLabel.Text = "Email Address:";
+            // 
+            // viewReportHistoryButton
+            // 
+            this.viewReportHistoryButton.Location = new System.Drawing.Point(70, 681);
+            this.viewReportHistoryButton.Name = "viewReportHistoryButton";
+            this.viewReportHistoryButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.viewReportHistoryButton.Size = new System.Drawing.Size(123, 23);
+            this.viewReportHistoryButton.TabIndex = 11;
+            this.viewReportHistoryButton.Text = "View Report History";
+            this.viewReportHistoryButton.UseVisualStyleBackColor = true;
+            this.viewReportHistoryButton.Click += new System.EventHandler(this.viewReportHistoryButton_Click);
+            // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(223, 681);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(124, 23);
+            this.updateButton.TabIndex = 12;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // windowText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1460, 828);
+            this.Controls.Add(this.updateButton);
+            this.Controls.Add(this.viewReportHistoryButton);
+            this.Controls.Add(this.emailAddressLabel);
             this.Controls.Add(this.reportDayLabel);
             this.Controls.Add(this.reportFrequencyLabel);
             this.Controls.Add(this.recievesReportsLabel);
@@ -172,5 +209,8 @@
         private System.Windows.Forms.Label reportDayLabel;
         private System.Windows.Forms.Label reportFrequencyLabel;
         private System.Windows.Forms.Label recievesReportsLabel;
+        private System.Windows.Forms.Label emailAddressLabel;
+        private System.Windows.Forms.Button viewReportHistoryButton;
+        private System.Windows.Forms.Button updateButton;
     }
 }

@@ -34,12 +34,29 @@ namespace BapSem22017
             recievesReportsLabel.Text = "Recieves Report:";
             reportFrequencyLabel.Text = "Report Frequency:";
             reportDayLabel.Text = "Report Day:";
+            emailAddressLabel.Text = "Email Address:";
+            viewReportHistoryButton.Text = "View Report History";
+            updateButton.Text = "Update";
         }
 
 
         private void findSupplierButton_Click(object sender, EventArgs e)
         {
-            //ADD METHOD FOR FIND BUTTON
+            return;
+        }
+
+
+
+        private void viewReportHistoryButton_Click(object sender, EventArgs e)
+        {
+            return;
+        }
+
+
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            return;
         }
     }
 }
