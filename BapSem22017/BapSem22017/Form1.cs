@@ -12,13 +12,14 @@ namespace BapSem22017
 {
     public partial class windowText : Form
     {
-        
+
 
         public windowText()
         {
-            
+
             InitializeComponent();
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -37,8 +38,12 @@ namespace BapSem22017
             emailAddressLabel.Text = "Email Address:";
             viewReportHistoryButton.Text = "View Report History";
             updateButton.Text = "Update";
+            emailAddressEntry.Text = "";
+
+
         }
 
+        Decimal reportDay;
 
         private void findSupplierButton_Click(object sender, EventArgs e)
         {
@@ -58,5 +63,14 @@ namespace BapSem22017
         {
             return;
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            reportDay = numericUpDown1.Value;
+        }
     }
+        
 }
+
+
+

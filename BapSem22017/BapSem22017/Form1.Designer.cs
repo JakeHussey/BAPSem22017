@@ -41,6 +41,9 @@
             this.emailAddressLabel = new System.Windows.Forms.Label();
             this.viewReportHistoryButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
+            this.emailAddressEntry = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // title
@@ -171,11 +174,28 @@
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
+            // emailAddressEntry
+            // 
+            this.emailAddressEntry.Location = new System.Drawing.Point(175, 630);
+            this.emailAddressEntry.Name = "emailAddressEntry";
+            this.emailAddressEntry.Size = new System.Drawing.Size(232, 20);
+            this.emailAddressEntry.TabIndex = 13;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(287, 544);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 17;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // windowText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1460, 828);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.emailAddressEntry);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.viewReportHistoryButton);
             this.Controls.Add(this.emailAddressLabel);
@@ -192,6 +212,7 @@
             this.Name = "windowText";
             this.Text = "Lowe Corp";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +233,7 @@
         private System.Windows.Forms.Label emailAddressLabel;
         private System.Windows.Forms.Button viewReportHistoryButton;
         private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.TextBox emailAddressEntry;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
