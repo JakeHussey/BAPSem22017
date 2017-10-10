@@ -29,16 +29,34 @@ namespace BapSem22017
             supplierCodeLabel.Text = "Supplier Code:";
             findSupplierEntry.Text = "";
             findSupplierButton.Text = "Find";
+
+
             supplierIDLabel.Text = "Supplier ID:";
+            supplierIDNumber.Text = "";
+
             supplierTypeLabel.Text = "Supplier Type:";
+            supplierTypeLabelA.Text = "//type";
+
             supplierStatusLabel.Text = "Supplier Status:";
+            supplierStatusLabelA.Text = "Active";
+
             recievesReportsLabel.Text = "Recieves Report:";
+            recievesReportsLabelA.Text = "Yes";
+
             reportFrequencyLabel.Text = "Report Frequency:";
+            reportFrequencyLabelA.Text = "//4";
+
             reportDayLabel.Text = "Report Day:";
+
             emailAddressLabel.Text = "Email Address:";
+
             viewReportHistoryButton.Text = "View Report History";
+
             updateButton.Text = "Update";
+
             emailAddressEntry.Text = "";
+
+            
 
 
         }
@@ -46,7 +64,7 @@ namespace BapSem22017
         Decimal reportDay;
 
         private void findSupplierButton_Click(object sender, EventArgs e)
-        {
+        { 
             return;
         }
 

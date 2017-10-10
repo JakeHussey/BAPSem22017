@@ -43,6 +43,11 @@
             this.updateButton = new System.Windows.Forms.Button();
             this.emailAddressEntry = new System.Windows.Forms.TextBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.supplierIDNumber = new System.Windows.Forms.Label();
+            this.supplierTypeLabelA = new System.Windows.Forms.Label();
+            this.supplierStatusLabelA = new System.Windows.Forms.Label();
+            this.recievesReportsLabelA = new System.Windows.Forms.Label();
+            this.reportFrequencyLabelA = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,11 +194,60 @@
             this.numericUpDown1.TabIndex = 17;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
+            // supplierIDNumber
+            // 
+            this.supplierIDNumber.AutoSize = true;
+            this.supplierIDNumber.Location = new System.Drawing.Point(371, 360);
+            this.supplierIDNumber.Name = "supplierIDNumber";
+            this.supplierIDNumber.Size = new System.Drawing.Size(13, 13);
+            this.supplierIDNumber.TabIndex = 18;
+            this.supplierIDNumber.Text = "0";
+            // 
+            // supplierTypeLabelA
+            // 
+            this.supplierTypeLabelA.AutoSize = true;
+            this.supplierTypeLabelA.Location = new System.Drawing.Point(348, 398);
+            this.supplierTypeLabelA.Name = "supplierTypeLabelA";
+            this.supplierTypeLabelA.Size = new System.Drawing.Size(35, 13);
+            this.supplierTypeLabelA.TabIndex = 19;
+            this.supplierTypeLabelA.Text = "label1";
+            // 
+            // supplierStatusLabelA
+            // 
+            this.supplierStatusLabelA.AutoSize = true;
+            this.supplierStatusLabelA.Location = new System.Drawing.Point(347, 434);
+            this.supplierStatusLabelA.Name = "supplierStatusLabelA";
+            this.supplierStatusLabelA.Size = new System.Drawing.Size(35, 13);
+            this.supplierStatusLabelA.TabIndex = 20;
+            this.supplierStatusLabelA.Text = "label1";
+            // 
+            // recievesReportsLabelA
+            // 
+            this.recievesReportsLabelA.AutoSize = true;
+            this.recievesReportsLabelA.Location = new System.Drawing.Point(346, 471);
+            this.recievesReportsLabelA.Name = "recievesReportsLabelA";
+            this.recievesReportsLabelA.Size = new System.Drawing.Size(35, 13);
+            this.recievesReportsLabelA.TabIndex = 21;
+            this.recievesReportsLabelA.Text = "label1";
+            // 
+            // reportFrequencyLabelA
+            // 
+            this.reportFrequencyLabelA.AutoSize = true;
+            this.reportFrequencyLabelA.Location = new System.Drawing.Point(347, 509);
+            this.reportFrequencyLabelA.Name = "reportFrequencyLabelA";
+            this.reportFrequencyLabelA.Size = new System.Drawing.Size(35, 13);
+            this.reportFrequencyLabelA.TabIndex = 22;
+            this.reportFrequencyLabelA.Text = "label1";
+            // 
             // windowText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1460, 828);
+            this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.reportFrequencyLabelA);
+            this.Controls.Add(this.recievesReportsLabelA);
+            this.Controls.Add(this.supplierStatusLabelA);
+            this.Controls.Add(this.supplierTypeLabelA);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.emailAddressEntry);
             this.Controls.Add(this.updateButton);
@@ -209,6 +263,7 @@
             this.Controls.Add(this.findSupplierEntry);
             this.Controls.Add(this.supplierCodeLabel);
             this.Controls.Add(this.title);
+            this.Controls.Add(this.supplierIDNumber);
             this.Name = "windowText";
             this.Text = "Lowe Corp";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -235,5 +290,10 @@
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.TextBox emailAddressEntry;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label supplierIDNumber;
+        private System.Windows.Forms.Label supplierTypeLabelA;
+        private System.Windows.Forms.Label supplierStatusLabelA;
+        private System.Windows.Forms.Label recievesReportsLabelA;
+        private System.Windows.Forms.Label reportFrequencyLabelA;
     }
 }
