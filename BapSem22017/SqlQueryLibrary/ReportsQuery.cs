@@ -2,42 +2,43 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlQueryLibrary
 {
-    public class SuppliersQuery
+    public class ReportsQuery
     {
         private string _connectionString;
 
-        public SuppliersQuery(string connectionString)
+        public ReportsQuery(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public  List<SupplierModel> GetSuppliers(string supplierCode)
+        public List<Report> GetReports(string supplierCode, DateTime? fromDate = null, DateTime? toDate = null)
         {
+            DateTime fromDateTime = fromDate ?? DateTime.MinValue;
+            DateTime toDateTime = toDate ?? DateTime.MaxValue;
+
             try
             {
-                
                 if (string.IsNullOrEmpty(_connectionString))
                 {
                     throw new Exception($"{nameof(_connectionString)} is null.");
                 }
 
-                var supplierList = new List<SupplierModel>();
+                var reportList = new List<Report>();
 
                 using (var sqlConnection = new SqlConnection(_connectionString))
                 {
-                    var commandString = $"SELECT SUPPLIER_CODE, SUPPLIER_STATUS, SUPPLIER_TYPE FROM SUPPLIERS " +
-                                        $"WHERE SUPPLIER_CODE = @SUPPLIERCODE";
+                    var commandString =
+                        $"SELECT * FROM SUPPLIER_REPORTS " + //make sure we get the correct names for the fields
+                        $"WHERE SUPPLIER_CODE = @SUPPLIERCODE AND REPORT_DATE >= @FROMDATE AND REPORT_DATE <= @TODATE";
 
                     using (var sqlCommand = new SqlCommand(commandString, sqlConnection))
                     {
                         sqlCommand.Parameters.AddWithValue("@SUPPLIERCODE", supplierCode);
+                        sqlCommand.Parameters.AddWithValue("@FROMDATE", fromDateTime);
+                        sqlCommand.Parameters.AddWithValue("@TODATE", toDateTime);
 
                         var data = sqlCommand.ExecuteReader();
 
@@ -46,21 +47,21 @@ namespace SqlQueryLibrary
                             throw new Exception("Query returned no data.");
                         }
 
-                
                         while (data.HasRows)
                         {
-                            
-                            supplierList.Add(new SupplierModel()
+                            //TODO: sort out which columns we want to retrieve here
+                            reportList.Add(new Report()
                             {
-                                SupplierNumber = data.GetInt32(0),
-                                Status =  data.GetString(1).ToUpper() == "ACTIVE",
-                                Type = data.GetInt32(2)
-                            });            
+                                ReportId = data.GetInt32(0),
+                                Title = data.GetString(1),
+                                Date = data.GetDateTime(2),
+                                //ReportType = data.GetInt32(3)
+                            });
                         }
                     }
                 }
 
-                return supplierList;
+                return reportList;
             }
             catch (Exception ex)
             {
@@ -68,7 +69,5 @@ namespace SqlQueryLibrary
                 throw;
             }
         }
-
-        
     }
 }

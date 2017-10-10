@@ -22,7 +22,7 @@ namespace SqlQueryLibrary
 
     public class Report
     {
-        public Guid ReportId { get; set; }
+        public int ReportId { get; set; }
         
         public string Title { get; set; }
 

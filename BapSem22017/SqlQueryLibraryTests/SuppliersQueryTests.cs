@@ -16,10 +16,14 @@ namespace SqlQueryLibrary.Tests
         [InlineData("1239r4")]
         public void  GetSuppliersTest(string supplierCode)
         {
+            var suppliersQuery = new SuppliersQuery("");
 
-            var exception = Record.Exception(() => SuppliersQuery.GetSuppliers(supplierCode));
+            var exception = Record.Exception(() => suppliersQuery.GetSuppliers(supplierCode));
 
             Assert.NotNull(exception);
         }
+
+      
+
     }
 }
