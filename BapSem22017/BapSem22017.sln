@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BapSem22017", "BapSem22017\BapSem22017.csproj", "{10AD3CF0-69E3-41C8-81AD-59CF3453FD5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlQueryLibrary", "SqlQueryLibrary\SqlQueryLibrary.csproj", "{31EB40BB-269F-4BFD-A7A9-18F53D22E610}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{10AD3CF0-69E3-41C8-81AD-59CF3453FD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10AD3CF0-69E3-41C8-81AD-59CF3453FD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10AD3CF0-69E3-41C8-81AD-59CF3453FD5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31EB40BB-269F-4BFD-A7A9-18F53D22E610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EB40BB-269F-4BFD-A7A9-18F53D22E610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EB40BB-269F-4BFD-A7A9-18F53D22E610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EB40BB-269F-4BFD-A7A9-18F53D22E610}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B48D967-A850-400C-8753-7F4B97034BAF}
 	EndGlobalSection
 EndGlobal
