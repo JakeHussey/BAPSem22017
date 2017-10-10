@@ -31,7 +31,7 @@ namespace SqlQueryLibrary
                 using (var sqlConnection = new SqlConnection(_connectionString))
                 {
                     var commandString =
-                        $"SELECT * FROM SUPPLIER_REPORTS " + //make sure we get the correct names for the fields
+                        $"SELECT REPORT_ID, REPORT_NAME, REPORT_DATE, REPORT_TIME, REPORT_TYPE FROM SUPPLIER_REPORTS " + 
                         $"WHERE SUPPLIER_CODE = @SUPPLIERCODE AND REPORT_DATE >= @FROMDATE AND REPORT_DATE <= @TODATE";
 
                     using (var sqlCommand = new SqlCommand(commandString, sqlConnection))
@@ -55,7 +55,9 @@ namespace SqlQueryLibrary
                                 ReportId = data.GetInt32(0),
                                 Title = data.GetString(1),
                                 Date = data.GetDateTime(2),
-                                //ReportType = data.GetInt32(3)
+                                Time = data.GetDateTime(3),
+                                Type = data.GetString(4),
+                                
                             });
                         }
                     }
