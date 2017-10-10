@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,16 @@ namespace SqlQueryLibrary
     {
         private static string _connectionString;  // Make sure this has connection credentials
         
-        public static List<SupplierModel> GetSuppliers(string supplierCode)
+        public static List<SupplierModel> GetSuppliers(string supplierCode, string connectionString ="")
         {
             try
             {
+                _connectionString = connectionString;
+
+                if (string.IsNullOrEmpty(_connectionString))
+                {
+                    throw new Exception($"{nameof(_connectionString)} is null.");
+                }
                 var supplierList = new List<SupplierModel>();
 
                 using (var sqlConnection = new SqlConnection(_connectionString))
