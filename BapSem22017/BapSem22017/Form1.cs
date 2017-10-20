@@ -116,10 +116,10 @@ namespace BapSem22017
 
         private void activeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (activeCheckBox.CheckedChanged = true)
-            {
-                activeCheckBox.CheckState = 
-            }
+            //if (activeCheckBox.CheckedChanged = true)
+            //{
+            //    activeCheckBox.CheckState = 
+            //}
         }
     }
         
