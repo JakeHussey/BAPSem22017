@@ -56,7 +56,7 @@ namespace SqlQueryLibrary
                                 Title = data.GetString(1),
                                 Date = data.GetDateTime(2),
                                 Time = data.GetDateTime(3),
-                                Type = data.GetString(4),
+                                Type = data.GetInt32(4),
                                 
                             });
                         }

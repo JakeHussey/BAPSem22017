@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlQueryLibrary;
 
 namespace BapSem22017
 {
@@ -83,8 +84,10 @@ namespace BapSem22017
 
 
             //---------------------------------------------
-            
-
+            //Server=tcp:lowe.database.windows.net,1433;Initial Catalog=GMaster;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+            var supplierQuery = new SuppliersQuery("Server=tcp:lowe.database.windows.net,1433;Initial Catalog=GMaster;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var suppliers = supplierQuery.GetSuppliers("TAYLPR");
+            Console.WriteLine(suppliers.Count);
 
         }
 
