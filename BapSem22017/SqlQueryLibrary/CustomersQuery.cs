@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,16 +11,16 @@ using SqlQueryLibrary;
 
 namespace SqlQueryLibrary
 {
-    public class SuppliersQuery
+    public class CustomersQuery
     {
         private string _connectionString;
 
-        public SuppliersQuery(string connectionString)
+        public CustomersQuery(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public  List<SupplierModel> GetSuppliers(List<string> supplierCodes)
+        public List<CustomerModel> GetCustomer(List<int> customerCodes)   //Customer_No or Customer_Code are both acceptable
         {
             try
             {
@@ -29,41 +29,42 @@ namespace SqlQueryLibrary
                     throw new Exception($"{nameof(_connectionString)} is null.");
                 }
 
-                string supplierCodeList = string.Empty;
-                supplierCodes.ForEach(s => supplierCodeList += s + ",");
-           
-                var supplierList = new List<SupplierModel>();
+                string customerCodeList = string.Empty;
+                customerCodes.ForEach(s => customerCodeList += s + ",");
+
+                var customerList = new List<CustomerModel>();
 
                 using (var sqlConnection = new SqlConnection(_connectionString))
                 {
-                    var commandString = $"SELECT Supplier_No, Supplier_Code, Supplier_Status, Supplier_Type FROM dbo.Suppliers " +
-                                        $"WHERE Supplier_Code = @SUPPLIERCODE";
+                    var commandString = $"SELECT Customer_No, Customer_Code, City, Country FROM dbo.Customers " +
+                                        $"WHERE Customer_Code = @CUSTOMERCODE";
 
                     if (sqlConnection.State == ConnectionState.Closed)
                         sqlConnection.Open();
 
                     using (var sqlCommand = new SqlCommand(commandString, sqlConnection))
                     {
-                        sqlCommand.Parameters.AddWithValue("@SUPPLIERCODE", supplierCodeList.Substring(0, supplierCodeList.Length - 1));
+                        sqlCommand.Parameters.AddWithValue("@CUSTOMERCODE", customerCodeList.Substring(0, customerCodeList.Length - 1));
 
                         var data = sqlCommand.ExecuteReader();
 
                         if (!data.HasRows)
                         {
                             throw new Exception("Query returned no data.");
-                        } 
-                        while (data.Read()) 
+                        }
+                        while (data.Read())
                         {
-                            supplierList.Add(new SupplierModel{
-                                SupplierNumber = data.GetInt32(0),
-                                SupplierCode = data.GetString(1), 
-                                Status =  data.GetString(2).ToUpper() == "ACTIVE",
-                                Type = data.GetString(3)
+                            customerList.Add(new CustomerModel
+                            {
+                                CustomerNo = data.GetInt32(0),
+                                CustomerCode = data.GetString(1),
+                                City = data.GetString(2),
+                                Country = data.GetString(3)
                             });
                         }
                     }
                 }
-                return supplierList;
+                return customerList;
             }
             catch (Exception ex)
             {
@@ -71,7 +72,5 @@ namespace SqlQueryLibrary
                 throw;
             }
         }
-
-        
     }
 }

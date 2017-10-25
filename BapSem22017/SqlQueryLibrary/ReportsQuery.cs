@@ -31,8 +31,8 @@ namespace SqlQueryLibrary
                 using (var sqlConnection = new SqlConnection(_connectionString))
                 {
                     var commandString =
-                        $"SELECT REPORT_ID, REPORT_NAME, REPORT_DATE, REPORT_TIME, REPORT_TYPE FROM SUPPLIER_REPORTS " + 
-                        $"WHERE SUPPLIER_CODE = @SUPPLIERCODE AND REPORT_DATE >= @FROMDATE AND REPORT_DATE <= @TODATE";
+                        $"SELECT Report_ID, Report_Name, Report_Date, Report_Time, Report_Type FROM Supplier_Reports " + 
+                        $"WHERE Supplier_Code = @SUPPLIERCODE AND Report_Date >= @FROMDATE AND Report_Date <= @TODATE";
 
                     using (var sqlCommand = new SqlCommand(commandString, sqlConnection))
                     {
@@ -47,11 +47,10 @@ namespace SqlQueryLibrary
                             throw new Exception("Query returned no data.");
                         }
 
-                        while (data.HasRows)
+                        while (data.Read())
                         {
                             //TODO: sort out which columns we want to retrieve here
-                            reportList.Add(new Report()
-                            {
+                            reportList.Add(new Report{
                                 ReportId = data.GetInt32(0),
                                 Title = data.GetString(1),
                                 Date = data.GetDateTime(2),

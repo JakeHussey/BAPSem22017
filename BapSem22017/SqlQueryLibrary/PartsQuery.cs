@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,16 +11,16 @@ using SqlQueryLibrary;
 
 namespace SqlQueryLibrary
 {
-    public class SuppliersQuery
+    public class PartsQuery
     {
         private string _connectionString;
 
-        public SuppliersQuery(string connectionString)
+        public PartsQuery(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public  List<SupplierModel> GetSuppliers(List<string> supplierCodes)
+        public List<PartModel> GetParts(List<int> partKeys)
         {
             try
             {
@@ -29,41 +29,42 @@ namespace SqlQueryLibrary
                     throw new Exception($"{nameof(_connectionString)} is null.");
                 }
 
-                string supplierCodeList = string.Empty;
-                supplierCodes.ForEach(s => supplierCodeList += s + ",");
-           
-                var supplierList = new List<SupplierModel>();
+                string partKeyList = string.Empty;
+                partKeys.ForEach(s => partKeyList += s + ",");
+
+                var partList = new List<PartModel>();
 
                 using (var sqlConnection = new SqlConnection(_connectionString))
                 {
-                    var commandString = $"SELECT Supplier_No, Supplier_Code, Supplier_Status, Supplier_Type FROM dbo.Suppliers " +
-                                        $"WHERE Supplier_Code = @SUPPLIERCODE";
+                    var commandString = $"SELECT Part_Key, Part_No, Name, Part_Type FROM dbo.Parts" +
+                                        $"WHERE Part_Key = @PARTKEY";
 
                     if (sqlConnection.State == ConnectionState.Closed)
                         sqlConnection.Open();
 
                     using (var sqlCommand = new SqlCommand(commandString, sqlConnection))
                     {
-                        sqlCommand.Parameters.AddWithValue("@SUPPLIERCODE", supplierCodeList.Substring(0, supplierCodeList.Length - 1));
+                        sqlCommand.Parameters.AddWithValue("@PARTKEY", partKeyList.Substring(0, partKeyList.Length - 1));
 
                         var data = sqlCommand.ExecuteReader();
 
                         if (!data.HasRows)
                         {
                             throw new Exception("Query returned no data.");
-                        } 
-                        while (data.Read()) 
+                        }
+                        while (data.Read())
                         {
-                            supplierList.Add(new SupplierModel{
-                                SupplierNumber = data.GetInt32(0),
-                                SupplierCode = data.GetString(1), 
-                                Status =  data.GetString(2).ToUpper() == "ACTIVE",
-                                Type = data.GetString(3)
+                            partList.Add(new PartModel
+                            {
+                                PartKey = data.GetInt32(0),
+                                PartNo = data.GetString(1),
+                                Name = data.GetString(2),
+                                PartType = data.GetString(3)
                             });
                         }
                     }
                 }
-                return supplierList;
+                return partList;
             }
             catch (Exception ex)
             {
@@ -71,7 +72,5 @@ namespace SqlQueryLibrary
                 throw;
             }
         }
-
-        
     }
 }

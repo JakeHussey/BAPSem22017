@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SqlQueryLibrary;
+using System.Diagnostics;
 
 namespace BapSem22017
 {
@@ -85,9 +86,9 @@ namespace BapSem22017
 
             //---------------------------------------------
             //Server=tcp:lowe.database.windows.net,1433;Initial Catalog=GMaster;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-            var supplierQuery = new SuppliersQuery("Server=tcp:lowe.database.windows.net,1433;Initial Catalog=GMaster;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            var suppliers = supplierQuery.GetSuppliers(new List<string>(){"TAYLPR"});
-            Console.WriteLine(suppliers.Count);
+            var supplierQuery = new SuppliersQuery("Server=tcp:lowe.database.windows.net,1433;Initial Catalog=EIT;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var suppliers = supplierQuery.GetSuppliers(new List<string>(){"TAYLPR"}); //, "DOMISA", "WEBSHY"   fails with extra supplier codes for the where condition
+            Debug.WriteLine("Suppliers Returned: " + suppliers.Count);
 
         }
 
