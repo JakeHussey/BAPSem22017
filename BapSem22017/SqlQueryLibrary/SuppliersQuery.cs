@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
@@ -19,7 +20,7 @@ namespace SqlQueryLibrary
             _connectionString = connectionString;
         }
 
-        public  List<SupplierModel> GetSuppliers(string supplierCode)
+        public  List<SupplierModel> GetSuppliers(List<string> supplierCode)
         {
             try
             {
@@ -29,6 +30,10 @@ namespace SqlQueryLibrary
                     throw new Exception($"{nameof(_connectionString)} is null.");
                 }
 
+                string supplierCodeList = string.Empty;
+                supplierCode.ForEach(s => supplierCodeList += s + ",");
+           
+
                 var supplierList = new List<SupplierModel>();
 
                 using (var sqlConnection = new SqlConnection(_connectionString))
@@ -36,9 +41,12 @@ namespace SqlQueryLibrary
                     var commandString = $"SELECT SUPPLIER_CODE, SUPPLIER_STATUS, SUPPLIER_TYPE FROM SUPPLIERS " +
                                         $"WHERE SUPPLIER_CODE = @SUPPLIERCODE";
 
+                    if (sqlConnection.State == ConnectionState.Closed)
+                        sqlConnection.Open();
+
                     using (var sqlCommand = new SqlCommand(commandString, sqlConnection))
                     {
-                        sqlCommand.Parameters.AddWithValue("@SUPPLIERCODE", supplierCode);
+                        sqlCommand.Parameters.AddWithValue("@SUPPLIERCODE", supplierCodeList.Substring(0, supplierCodeList.Length - 1));
 
                         var data = sqlCommand.ExecuteReader();
 

@@ -86,7 +86,7 @@ namespace BapSem22017
             //---------------------------------------------
             //Server=tcp:lowe.database.windows.net,1433;Initial Catalog=GMaster;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
             var supplierQuery = new SuppliersQuery("Server=tcp:lowe.database.windows.net,1433;Initial Catalog=GMaster;Persist Security Info=False;User ID=eitadmin;Password=DaSci2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            var suppliers = supplierQuery.GetSuppliers("TAYLPR");
+            var suppliers = supplierQuery.GetSuppliers(new List<string>(){"TAYLPR"});
             Console.WriteLine(suppliers.Count);
 
         }
